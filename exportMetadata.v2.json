@@ -1,0 +1,88 @@
+{
+  "name" : "Informatica RAG-1741768678075",
+  "sourceOrgId" : "0YgL0gPfGW6ctk5Gkyx22O",
+  "sourceOrgName" : "Freelancing",
+  "exportedObjects" : [ {
+    "objectGuid" : "lxyhHAbM0C3eeUF4FCVvOT",
+    "objectName" : "Informatica RAG",
+    "objectType" : "Project",
+    "path" : "/Explore",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : null,
+      "objectRefs" : [ ],
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  }, {
+    "objectGuid" : "lsiwixOmsGqkl19Ky3eeit",
+    "objectName" : "Multimodal Chat Completion with Google Vertex AI",
+    "objectType" : "GUIDE",
+    "path" : "/Explore/Informatica RAG",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "1LOwD0wWcn6Hbf1-gt-3403189-2025-03-11T08:23:02.846Z::gt.xml"
+      },
+      "objectRefs" : [ "99xlU7hQH4ReAYuIwPdxsP" ],
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Guide to ask questions to the Google Vertex AI LLM about the context from an uploaded file",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  }, {
+    "objectGuid" : "99xlU7hQH4ReAYuIwPdxsP",
+    "objectName" : "Chat with Google Vertex AI",
+    "objectType" : "PROCESS",
+    "path" : "/Explore/Informatica RAG",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "POiVhC2g0aaaaaa-gt-3416162-2025-03-11T08:23:02.668Z::pd.xml"
+      },
+      "objectRefs" : [ "9zaoGpuLiK1fFjTDRbVFCk" ],
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "The process sends the user's question and  files in the base64encode format and answers the question based on the file content using Google Vertex AI",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  }, {
+    "objectGuid" : "9zaoGpuLiK1fFjTDRbVFCk",
+    "objectName" : "GoogleVertexAIChatWithFile",
+    "objectType" : "AI_CONNECTION",
+    "path" : "/Explore/Informatica RAG",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "xjuXNaaa-gt-3403175-2025-03-11T08:23:02.376Z::conn.xml"
+      },
+      "objectRefs" : [ ],
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Google Vertex AI connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  } ]
+}
