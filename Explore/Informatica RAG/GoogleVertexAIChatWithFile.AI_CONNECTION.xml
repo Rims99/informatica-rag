@@ -1,0 +1,55 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>xjuXNaaa-gt-3403175-2025-03-11T08:23:02.376Z::conn.xml</types1:EntryId>
+      <types1:Name>GoogleVertexAIChatWithFile-2</types1:Name>
+      <types1:ParentFlowIds>POiVhC2g0aaaaaa-gt-3416162-2025-03-11T08:23:02.668Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Google Vertex AI connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rimsha9905@gmail.com</types1:CreatedBy>
+      <types1:CreationDate>2025-03-11T08:23:02Z</types1:CreationDate>
+      <types1:ModifiedBy>rimsha9905@gmail.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-03-11T09:41:27Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rimsha9905@gmail.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-03-11T09:41:46Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/GoogleVertexAIChatWithFile-2/GoogleVertexAIChatWithFile-2.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="GoogleVertexAIChatWithFile"
+                     label="GoogleVertexAIChatWithFile"
+                     name="GoogleVertexAIChatWithFile-2">
+            <description>Google Vertex AI connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="Project_ID" value="western-pivot-453319-g4"/>
+               <attribute encrypted="false" name="Location" value="us-central1"/>
+               <attribute encrypted="false"
+                          name="Private_Key_ID"
+                          value="e6026702d9c4eb14faa2f1afbe704ffdce7316f3"/>
+               <attribute encrypted="false"
+                          name="Client_Email"
+                          value="informatica-rag@western-pivot-453319-g4.iam.gserviceaccount.com"/>
+               <attribute encrypted="true" name="Private_Key" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/INFA_VertexAI/INFA_VertexAI_svcDef.xml"
+                               name="INFA_VertexAI"
+                               supportsConnectionTest="false"
+                               uuid="00c21922-3b79-4605-829d-bf8c4e1caebd">
+               <description>Google Vertex AI APIs for generating content, grounding, function calling, and embeddings.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>9zaoGpuLiK1fFjTDRbVFCk</types1:GUID>
+      <types1:DisplayName>GoogleVertexAIChatWithFile</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-12T08:38:23.148Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

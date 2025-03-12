@@ -1,0 +1,470 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>POiVhC2g0aaaaaa-gt-3416162-2025-03-11T08:23:02.668Z::pd.xml</types1:EntryId>
+      <types1:Name>Chat_with_Google_Vertex_AI-2</types1:Name>
+      <types1:ParentFlowIds>1LOwD0wWcn6Hbf1-gt-3403189-2025-03-11T08:23:02.846Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>The process sends the user's question and  files in the base64encode format and answers the question based on the file content using Google Vertex AI</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rimsha9905@gmail.com</types1:CreatedBy>
+      <types1:CreationDate>2025-03-11T08:23:03Z</types1:CreationDate>
+      <types1:ModifiedBy>rimsha9905@gmail.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-03-12T08:12:24Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rimsha9905@gmail.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-03-12T08:12:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Chat_with_Google_Vertex_AI-2/Chat_with_Google_Vertex_AI-2.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="99xlU7hQH4ReAYuIwPdxsP"
+                  displayName="Chat with Google Vertex AI"
+                  name="Chat_with_Google_Vertex_AI-2"
+                  overrideAPIName="false"
+                  processNamespace="urn:screenflow:process:">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>The process sends the user's question and  files in the base64encode format and answers the question based on the file content using Google Vertex AI</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="User prompt"
+                          name="User_Prompt"
+                          required="true"
+                          type="richtextarea">
+                  <options>
+                     <option name="text_height">12</option>
+                     <option name="text_width">100</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="File with context" name="Files" type="attachments">
+                  <options>
+                     <option name="count">10</option>
+                     <option name="maxsize">5242880</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="The URI or URL of the file"
+                          name="File_URL"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="IANA MIME type of the data"
+                          name="File_Type"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="The type of upload" name="Upload_Type" type="picklist">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="The final answer from LLM"
+                      name="LLM_Answer"
+                      type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="PO for Generate content action"
+                      name="Request_PO"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">GoogleVertexAIChatWithFile-2:GenerateContent_RequestBody</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9zaoGpuLiK1fFjTDRbVFCk</option>
+                  </options>
+               </field>
+               <field description="Attempt counter for requests" name="Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="Generation Configuration to LLM request"
+                      name="Generation_Config"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">GoogleVertexAIChatWithFile-2:GenerationConfig</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9zaoGpuLiK1fFjTDRbVFCk</option>
+                  </options>
+               </field>
+               <field description="Version model" name="Model_LLM" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Settings to enable grounding for requests with text"
+                      name="Grounding"
+                      type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="An array of uploaded files"
+                      name="Files_Array"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="idf638e22-1524-4892-9bf8-57bb783299cc">
+               <start id="oc8fe2d1f-8563-4030-b91c-dfb43dc6cffd">
+                  <link id="x03a9124c-611e-4b6b-be9c-72a25d20e75f"
+                        targetId="a199xlU7hQH4ReAYuIwPdxsP-m363j6g3"/>
+               </start>
+               <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m363j6g3">
+                  <title>Set Flow Configuration</title>
+                  <operation source="formula" to="temp.Generation_Config">
+                     <expression language="XQuery">&lt;generationConfig&gt;
+    &lt;maxOutputTokens&gt;4096&lt;/maxOutputTokens&gt; 
+    &lt;temperature&gt;0.7&lt;/temperature&gt;  
+    &lt;topP&gt;0.8&lt;/topP&gt; 
+&lt;/generationConfig&gt;</expression>
+                  </operation>
+                  <operation source="constant" to="temp.Model_LLM">gemini-2.0-flash-001</operation>
+                  <operation source="constant" to="temp.Grounding">true</operation>
+                  <link id="n7878e5d5-7d32-4fb8-bcfc-51109d2e066b"
+                        targetId="a199xlU7hQH4ReAYuIwPdxsP-m37bzrsr"/>
+               </assignment>
+               <container id="a199xlU7hQH4ReAYuIwPdxsP-m37bzrsr" type="exclusive">
+                  <title>Check Upload_Type</title>
+                  <flow id="wb035368b-bfa2-495f-becb-850d82d39b4f">
+                     <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m3pv6qzz">
+                        <title>Assignment to Files_Array</title>
+                        <operation source="formula" to="temp.Files_Array">
+                           <expression language="XQuery">let $result :=
+    for $part in tokenize($input.Files, ";")
+    return
+        &lt;parts&gt;
+            &lt;inlineData&gt;
+                &lt;mimeType&gt;{sff:getAttachmentContentType($part)}&lt;/mimeType&gt;
+                &lt;data&gt;{replace(sff:getBase64FromAttachment($part), "\s+", "")}&lt;/data&gt;
+            &lt;/inlineData&gt;
+        &lt;/parts&gt;
+return $result</expression>
+                        </operation>
+                        <link id="f51303464-de64-4c94-8fe3-4b043828cfc6"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m38sujqz"/>
+                     </assignment>
+                     <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m38sujqz">
+                        <title>Prepare Request PO with Attached File</title>
+                        <operation source="formula" to="temp.Request_PO">
+                           <expression language="XQuery">&lt;Generate_Content_Request&gt;
+&lt;contents&gt;
+&lt;role&gt;user&lt;/role&gt;
+{$temp.Files_Array}
+&lt;parts&gt;
+&lt;text&gt;{$input.User_Prompt}&lt;/text&gt;
+&lt;/parts&gt;
+&lt;/contents&gt;
+{$temp.Generation_Config }
+&lt;/Generate_Content_Request&gt;</expression>
+                        </operation>
+                        <link id="u4e259981-ae4f-4c90-a44c-767445910b42"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m38sujrj"/>
+                     </assignment>
+                     <jumpTo id="a199xlU7hQH4ReAYuIwPdxsP-m38sujrj">
+                        <link id="k51f68f14-6f14-4f6e-b5d0-e15584c9ae5b"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3mp"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="bf94d1aa9-d58e-4606-a05c-1ddc0dbab6e4">
+                     <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3ch">
+                        <title>Prepare Request PO with Link to File</title>
+                        <operation source="formula" to="temp.Request_PO">
+                           <expression language="XQuery">&lt;Generate_Content_Request&gt;
+&lt;contents&gt;
+&lt;role&gt;user&lt;/role&gt;
+&lt;parts&gt;
+&lt;fileData&gt;
+&lt;mimeType&gt;{$input.File_Type }&lt;/mimeType&gt;
+&lt;fileUri&gt;{$input.File_URL}&lt;/fileUri&gt;
+&lt;/fileData&gt;
+&lt;/parts&gt;
+&lt;parts&gt;
+&lt;text&gt;Answer using only file context provided.
+Question : {$input.User_Prompt}&lt;/text&gt;
+&lt;/parts&gt;
+&lt;/contents&gt;
+{$temp.Generation_Config }
+&lt;/Generate_Content_Request&gt;</expression>
+                        </operation>
+                        <link id="uc643ec70-5ae8-4a47-8542-ebd2efee15fd"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3on"/>
+                     </assignment>
+                     <jumpTo id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3on">
+                        <link id="o0572a1b9-7eeb-4b91-b841-718159916fff"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3mp"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="abcd26a79-40b2-4f58-9e0b-6e3e39bb41dc">
+                     <container id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3lz" type="exclusive">
+                        <title>Grounding?</title>
+                        <flow id="v27299458-5cc9-4600-88ce-a7253d6b5375">
+                           <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3m1">
+                              <title>Prepare Request PO with Grounding</title>
+                              <operation source="formula" to="temp.Request_PO">
+                                 <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;{$input.User_Prompt}&lt;/text&gt;
+      &lt;/parts&gt;       
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+{$temp.Generation_Config}
+&lt;tools&gt;
+	&lt;googleSearchRetrieval&gt;&lt;/googleSearchRetrieval&gt;
+&lt;/tools&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="m7d1bd99b-27f9-466c-8821-ccc9b9e558b3"
+                                 targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3lz"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="yf393f0ba-43a8-4dc4-87cc-02e9ba04bf33">
+                           <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3m3">
+                              <title>Prepare Request PO</title>
+                              <operation source="formula" to="temp.Request_PO">
+                                 <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;{$input.User_Prompt}&lt;/text&gt;
+      &lt;/parts&gt;       
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+{$temp.Generation_Config }
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="r65c68294-1a7d-4021-b9de-71af53edbce6"
+                                 targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3lz"
+                                 type="containerLink"/>
+                        </flow>
+                        <link id="h5d74fa0b-6485-457f-b956-ec8957573329"
+                              targetId="v27299458-5cc9-4600-88ce-a7253d6b5375"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="true">
+                                 <arg name="field">{$temp.Grounding}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="r292bfc54-abd2-405a-aa87-17fecc4822c2"
+                              targetId="yf393f0ba-43a8-4dc4-87cc-02e9ba04bf33"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="false">
+                                 <arg name="field">{$temp.Grounding}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="d2150af38-19e7-4cd0-ad28-d04e98276154"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3mp"/>
+                     </container>
+                     <service id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3mp">
+                        <title>Get Access Token</title>
+                        <serviceName>GoogleVertexAIChatWithFile-2:Get access token</serviceName>
+                        <serviceGUID>9zaoGpuLiK1fFjTDRbVFCk</serviceGUID>
+                        <link id="k405a1126-a768-4fb2-abd5-867da0cf006c"
+                              targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3n9"/>
+                     </service>
+                     <eventContainer id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3n9">
+                        <service id="o9675e0bf-eb5f-405e-aec8-4ac85a0eafef">
+                           <title>Generate Content</title>
+                           <serviceName>GoogleVertexAIChatWithFile-2:Generate content</serviceName>
+                           <serviceInput>
+                              <parameter name="access_token" source="field">output.access_token</parameter>
+                              <parameter name="model_ID" source="field">temp.Model_LLM</parameter>
+                              <parameter name="requestBody" source="field">temp.Request_PO</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="u544d9114-d232-4e31-9cbf-a6e929d11a51">
+                           <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nb">
+                              <title>Set LLM Answer</title>
+                              <operation source="field" to="output.LLM_Answer">output.response[1]/candidates[1]/content[1]/parts[1]/text</operation>
+                           </assignment>
+                           <link id="l906aa13c-9675-4241-b97d-cdb2488b3c31"
+                                 targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3n9"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="edeea872b-a8ff-40d1-9304-efd230bc788e">
+                           <container id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nd" type="exclusive">
+                              <title>Is Error Code 4xx</title>
+                              <flow id="bbee33fb0-1992-4511-8833-267a1ec0fc22">
+                                 <throw id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nf">
+                                    <title>Log an error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">Check LLM settings</parameter>
+                                       <parameter name="detail" source="constant" updatable="true"/>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <flow id="b08495a85-958f-4b7a-805c-58c72c81b4cc">
+                                 <container id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nh" type="exclusive">
+                                    <title>Retry</title>
+                                    <flow id="z79915597-c4d0-4e73-bd70-fecbe1bf932a">
+                                       <throw id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nj">
+                                          <title>Log an error if service is unavailable</title>
+                                          <throwInput>
+                                             <parameter name="code" source="constant" updatable="true">The service is unavailable</parameter>
+                                             <parameter name="detail" source="constant" updatable="true"/>
+                                             <parameter name="reason" source="constant" updatable="true"/>
+                                          </throwInput>
+                                       </throw>
+                                    </flow>
+                                    <flow id="w86f5cf6a-62d3-454a-9700-c5561b1762ad">
+                                       <wait id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nl">
+                                          <title>Wait to Retry</title>
+                                          <duration source="formula">
+                                             <function name="duration_expression">
+                                                <arg name="value">5</arg>
+                                                <arg name="scale">S</arg>
+                                                <arg name="businessDays"/>
+                                             </function>
+                                          </duration>
+                                          <link id="bf39f673b-f990-4574-a14a-53caed8d25f1"
+                                                targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nm"/>
+                                       </wait>
+                                       <assignment id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nm">
+                                          <title>Increment Retry Attempt</title>
+                                          <operation source="formula" to="temp.Retry">
+                                             <expression language="XQuery">$temp.Retry + 1</expression>
+                                          </operation>
+                                       </assignment>
+                                       <link id="h5ee635e6-de7c-4b88-8c60-229b24039f95"
+                                             targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nh"
+                                             type="containerLink"/>
+                                    </flow>
+                                    <link id="m090b6641-31a7-4d03-a136-3a322b309ce0"
+                                          targetId="z79915597-c4d0-4e73-bd70-fecbe1bf932a"
+                                          type="containerLink">
+                                       <condition source="formula">
+                                          <function name="equals">
+                                             <arg name="left">{$temp.Retry}</arg>
+                                             <arg name="right">{3}</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="l179a79c9-e80d-4894-a425-c1c4d9e46aca"
+                                          targetId="w86f5cf6a-62d3-454a-9700-c5561b1762ad"
+                                          type="containerLink"/>
+                                 </container>
+                                 <link id="l6abaad3b-9262-4c9f-ae2e-d41f16b316f6"
+                                       targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nd"
+                                       type="containerLink"/>
+                              </flow>
+                              <link id="g1ffa3306-0e1f-4e4e-bf0f-9b3692183153"
+                                    targetId="bbee33fb0-1992-4511-8833-267a1ec0fc22"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="starts-with">
+                                       <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                       <arg name="right">HTTP_40</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="cfcb5167c-0fa2-4a2f-bae9-0cd108c088be"
+                                    targetId="b08495a85-958f-4b7a-805c-58c72c81b4cc"
+                                    type="containerLink"/>
+                              <link id="ec356a730-0f79-47fa-a321-3b76cb3ae49c"
+                                    targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nn"/>
+                           </container>
+                           <jumpTo id="a199xlU7hQH4ReAYuIwPdxsP-m37eb3nn">
+                              <link id="v6935a050-fb4e-419f-bbd9-5f20c884d6f5"
+                                    targetId="a199xlU7hQH4ReAYuIwPdxsP-m37eb3n9"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="k86183b3d-961e-44da-ac07-6dead061b8b0"
+                              targetId="u544d9114-d232-4e31-9cbf-a6e929d11a51"
+                              type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="x47dd92ba-f2cf-41f8-8e9c-6615042f2a25"
+                                  interrupting="true">
+                              <link id="r0f07d076-2ada-483c-b8e3-f486210dd2e2"
+                                    targetId="edeea872b-a8ff-40d1-9304-efd230bc788e"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="m3114369a-d188-423e-8351-ff6e2636089a"
+                           targetId="a199xlU7hQH4ReAYuIwPdxsP-m37bzrsr"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="x7c965757-401a-450a-b088-31d79468c422"
+                        targetId="wb035368b-bfa2-495f-becb-850d82d39b4f"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="included">
+                           <arg name="left">{$input.Upload_Type}</arg>
+                           <arg name="right">Attach Files</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k2913b24e-2c33-4f2c-9f41-dcabad702015"
+                        targetId="bf94d1aa9-d58e-4606-a05c-1ddc0dbab6e4"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="included">
+                           <arg name="left">{$input.Upload_Type}</arg>
+                           <arg name="right">File URL</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="r1f0e08bd-32fe-4449-9435-8490b1ad132b"
+                        targetId="abcd26a79-40b2-4f58-9e0b-6e3e39bb41dc"
+                        type="containerLink"/>
+                  <link id="td0503248-2885-47ef-b911-febc23186d01"
+                        targetId="a199xlU7hQH4ReAYuIwPdxsP-c"/>
+               </container>
+               <end id="a199xlU7hQH4ReAYuIwPdxsP-c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>99xlU7hQH4ReAYuIwPdxsP</types1:GUID>
+      <types1:DisplayName>Chat with Google Vertex AI</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-12T08:38:23.193Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

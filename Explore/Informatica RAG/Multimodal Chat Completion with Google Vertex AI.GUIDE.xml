@@ -1,0 +1,344 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>1LOwD0wWcn6Hbf1-gt-3403189-2025-03-11T08:23:02.846Z::gt.xml</types1:EntryId>
+      <types1:Name>Multimodal_Chat_Completion_with_Google_Vertex_AI-2</types1:Name>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description>Guide to ask questions to the Google Vertex AI LLM about the context from an uploaded file</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rimsha9905@gmail.com</types1:CreatedBy>
+      <types1:CreationDate>2025-03-11T08:23:03Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rimsha9905@gmail.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-03-11T10:17:33Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Multimodal_Chat_Completion_with_Google_Vertex_AI_2/Multimodal_Chat_Completion_with_Google_Vertex_AI_2.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Multimodal Chat Completion with Google Vertex AI"
+                         doneOnEndStep="false"
+                         name="Multimodal_Chat_Completion_with_Google_Vertex_AI-2"
+                         runAsUser="$current">
+            <description>Guide to ask questions to the Google Vertex AI LLM about the context from an uploaded file</description>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="File with context"
+                          name="Files"
+                          required="false"
+                          type="attachments">
+                  <options>
+                     <option name="count">10</option>
+                     <option name="maxsize">5242880</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="User prompt"
+                          name="User_Prompt"
+                          required="true"
+                          type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="The URI or URL of the file. The file URL must be publicly accessible."
+                          name="File_URL"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="IANA MIME type of the data"
+                          name="File_Type"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="The type of upload. Directly attach a file or provide the file URL."
+                          name="Upload_Type"
+                          required="false"
+                          type="picklist">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="The final answer from LLM"
+                      name="Answer"
+                      type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="a1jBs9S0IHAG3dm8gJJKIAk3-jd300kk3">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-jd300kk3_a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2">
+                  <title>Specify Question and Upload Type</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="font-size: 16pt; color: #e67e23;"&gt;Ask a question and optionally attach files to set the context for our conversation.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="background-color: #ffffff; color: #236fa1;"&gt;&lt;span style="font-size: 14pt;"&gt;&lt;span style="color: #236fa1;"&gt;Specify the upload type &lt;/span&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;&lt;span style="color: #e03e2d;"&gt;*&lt;/span&gt;&lt;span style="color: #e03e2d;"&gt;&lt;span style="color: #236fa1;"&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;input class="" style="color: #236fa1;" name="input.Upload_Type" type="text" value="Upload_Type (input)*"&gt;&lt;span style="color: #236fa1;"&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;Enter your query below &lt;span style="color: #e03e2d;"&gt;*&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" name="input.User_Prompt" type="text" value="User_Prompt (input)*"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2_m3wy1o3g"
+                             targetScreen="m3wy1o3g">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.User_Prompt"
+                                     readonly="false"
+                                     required="true"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">50</option>
+                           <option name="text_height">6</option>
+                           <option name="required">true</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.Upload_Type"
+                                     readonly="false"
+                                     required="false"
+                                     type="picklist">
+                        <options>
+                           <option name="required">true</option>
+                           <option name="defaultvalue">No Files</option>
+                           <option name="values">[{"label":"No Files","value":"No Files"},{"label":"Attach Files","value":"Attach Files"},{"label":"File URL","value":"File URL"}]</option>
+                           <option hide="true" name="valuelist.source">csv</option>
+                           <option hide="true" name="valuelist.csvdata">No Files, Attach Files, File URL</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="m3wy1o3i">
+                  <title>Attach Files</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;&lt;span style="background-color: #ffffff; color: #236fa1;"&gt;&lt;span style="font-size: 14pt;"&gt;&lt;span style="font-size: 16pt; color: #e67e23;"&gt;Upload files to set the context for our conversation.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;Select files to upload &lt;span style="color: #e03e2d;"&gt;* &lt;input class="" name="input.Files" type="text" value="Files (input)"&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="m3wy1o3i_m3wy1o3m" targetScreen="m3wy1o3m">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.Files"
+                                     readonly="false"
+                                     required="false"
+                                     type="attachments">
+                        <options>
+                           <option name="count">10</option>
+                           <option name="maxsize">5242880</option>
+                           <option name="required">false</option>
+                           <option name="values">[{"label":"sadsad","value":"sadsad"}]</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="m3wy1o3k">
+                  <title>Specify the URL and File Type</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;&lt;span style="font-size: 16pt; color: #e67e23;"&gt;Specify URI-based data for the file to set the context for our conversation.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;Enter the publicly accessible URI or URL of the file &lt;span style="color: #e03e2d;"&gt;*&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" name="input.File_URL" type="text" value="File_URL*"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: #236fa1; font-size: 14pt;"&gt;Enter the MIME type of the file &lt;span style="color: #e03e2d;"&gt;*&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" name="input.File_Type" type="text" value="File_Type*"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="m3wy1o3k_m3wy1o3m" targetScreen="m3wy1o3m">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.File_URL"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">true</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.File_Type"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">true</option>
+                           <option name="hover_text">e.g.: application/pdf, image/jpeg, audio/mp3, video/mov, text/plain</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjje4fg">
+                  <title>Answer</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;strong&gt;&lt;span style="font-size: 14pt; color: #e67e23;"&gt;Here is the response from LLM:&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span style="text-decoration: underline;"&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.LLM_Answer" readonly="readonly" type="text" value="LLM_Answer (output)"&gt;&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjje4fg_a1jBs9S0IHAG3dm8gJJKIAk3-m02cfshg"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-m02cfshg">
+                        <text>Next Question</text>
+                     </action>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjje4fg_a9bc2575f-2606-4612-81be-a655a51c92bc"
+                             targetScreen="a9bc2575f-2606-4612-81be-a655a51c92bc">
+                        <text>End</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.LLM_Answer"
+                                     readonly="true"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">50</option>
+                           <option name="text_height">10</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <endScreen id="a1jBs9S0IHAG3dm8gJJKIAk3-jd4cwa59">
+                  <title>End</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <empty gatewayType="exclusive" id="m3wy1o3m">
+                  <actions>
+                     <action alt="null" id="m3wy1o3m_m37ejdf4" targetScreen="m37ejdf4">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="a9bc2575f-2606-4612-81be-a655a51c92bc">
+                  <actions>
+                     <action alt="null"
+                             id="a9bc2575f-2606-4612-81be-a655a51c92bc_a1jBs9S0IHAG3dm8gJJKIAk3-jd4cwa59"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-jd4cwa59">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <jumpTo id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzb04"
+                       targetTitle="Specify Question and Upload Type">
+                  <actions>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzb04_a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzax2">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <callProcess id="m37ejdf4">
+                  <title>Chat with Google Vertex AI</title>
+                  <subflowGUID>99xlU7hQH4ReAYuIwPdxsP</subflowGUID>
+                  <subflowPath>Chat_with_Google_Vertex_AI-2</subflowPath>
+                  <runAsUser>$current</runAsUser>
+                  <serviceInput>
+                     <parameter id="m3pr6fir"
+                                name="User_Prompt"
+                                source="field"
+                                updatable="true">input.User_Prompt</parameter>
+                     <parameter id="m3pr6fis" name="Files" source="field" updatable="true">input.Files</parameter>
+                     <parameter id="m3pr6fit" name="File_URL" source="field" updatable="true">input.File_URL</parameter>
+                     <parameter id="m3pr6fiu" name="File_Type" source="field" updatable="true">input.File_Type</parameter>
+                     <parameter id="m3pr6fiv"
+                                name="Upload_Type"
+                                source="field"
+                                updatable="true">input.Upload_Type</parameter>
+                  </serviceInput>
+                  <subflowOutput>
+                     <field name="LLM_Answer" type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </subflowOutput>
+                  <actions>
+                     <action alt="null"
+                             id="m37ejdf4_a1jBs9S0IHAG3dm8gJJKIAk3-lzjje4fg"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-lzjje4fg">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </callProcess>
+               <dataDecision id="m3wy1o3g">
+                  <title>Check Upload_Type</title>
+                  <dataName>input.Upload_Type</dataName>
+                  <actions>
+                     <action alt="included Attach Files"
+                             id="m3wy1o3g_m3wy1o3i"
+                             targetScreen="m3wy1o3i">
+                        <text>Contains Attach Files</text>
+                     </action>
+                     <action alt="included File URL"
+                             id="m3wy1o3g_m3wy1o3k"
+                             targetScreen="m3wy1o3k">
+                        <text>Contains File URL</text>
+                     </action>
+                     <action alt="else " id="m3wy1o3g_m3wy1o3m" targetScreen="m3wy1o3m">
+                        <text>Otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <assignment id="a1jBs9S0IHAG3dm8gJJKIAk3-m02cfshg">
+                  <title>Clear User Input</title>
+                  <operation source="constant" to="input.User_Prompt"/>
+                  <operation source="constant" to="input.Upload_Type"/>
+                  <operation source="constant" to="input.File_URL"/>
+                  <operation source="constant" to="input.File_Type"/>
+                  <actions>
+                     <action alt="null"
+                             id="a1jBs9S0IHAG3dm8gJJKIAk3-m02cfshg_a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzb04"
+                             targetScreen="a1jBs9S0IHAG3dm8gJJKIAk3-lzjjzb04">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>lsiwixOmsGqkl19Ky3eeit</types1:GUID>
+      <types1:DisplayName>Multimodal Chat Completion with Google Vertex AI</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-12T08:38:23.238Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
